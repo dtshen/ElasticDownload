@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.SeekBar;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -14,12 +15,35 @@ import is.arontibo.library.ProgressDownloadView;
 
 public class MainActivity extends ActionBarActivity {
 
+    private SeekBar tensionControl=null;
     @InjectView(R.id.elastic_download_view) ElasticDownloadView mElasticDownloadView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tensionControl = (SeekBar) findViewById(R.id.seekBar);
+        tensionControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChanged = 1;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+
+                progressChanged = progress;
+                if(progress<5)
+                    progressChanged=5;
+                if(progress>95)
+                    progressChanged=95;
+
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mElasticDownloadView.setTension(progressChanged);
+            }
+        });
         ButterKnife.inject(this);
     }
 

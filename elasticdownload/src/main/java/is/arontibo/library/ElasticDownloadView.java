@@ -70,7 +70,7 @@ public class ElasticDownloadView extends FrameLayout implements IntroView.EnterA
     public void fail() {
         mProgressDownloadView.drawFail();
     }
-
+    public void setTension(int tension){mProgressDownloadView.setTension(tension);}
     public void restartAnimation()
     {
         //mIntroView.setVisibility(VISIBLE);

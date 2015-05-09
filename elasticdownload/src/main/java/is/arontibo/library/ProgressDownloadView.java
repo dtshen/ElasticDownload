@@ -34,7 +34,7 @@ public class ProgressDownloadView extends View {
     private float mDensity = getResources().getDisplayMetrics().density;
     private float mProgress = 0, mTarget = 0, mSpeedAngle = 0, mBubbleAngle = 0, mFailAngle = 0, mFlipFactor;
     private State mState = State.STATE_WORKING;
-
+    private int wireTension=15;
     private enum State {
         STATE_WORKING,
         STATE_FAILED,
@@ -239,9 +239,12 @@ public class ProgressDownloadView extends View {
     /**
      * MARK: Animation functions
      */
-
+    public void setTension(int newTension)
+    {
+        wireTension=newTension;
+    }
     private float calculateDeltaY() {
-        int wireTension = 5;
+
         if(mProgress <= 50) {
             return  (mProgress * mWidth/wireTension)/50 + Math.abs((mTarget-getProgress())/wireTension) + Math.abs(mBubbleAngle);
         } else {

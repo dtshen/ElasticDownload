@@ -9,4 +9,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_alignBottom="@+id/elastic_download_view"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
