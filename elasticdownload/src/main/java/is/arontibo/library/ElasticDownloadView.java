@@ -71,7 +71,13 @@ public class ElasticDownloadView extends FrameLayout implements IntroView.EnterA
         mProgressDownloadView.drawFail();
     }
 
-
+    public void restartAnimation()
+    {
+        //mIntroView.setVisibility(VISIBLE);
+        mIntroView.startAnimation();
+        mProgressDownloadView.restart();
+        mProgressDownloadView.drawSuccess();
+    }
     /**
      * MARK: Enter animation overrides
      */

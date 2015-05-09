@@ -241,7 +241,7 @@ public class ProgressDownloadView extends View {
      */
 
     private float calculateDeltaY() {
-        int wireTension = 15;
+        int wireTension = 5;
         if(mProgress <= 50) {
             return  (mProgress * mWidth/wireTension)/50 + Math.abs((mTarget-getProgress())/wireTension) + Math.abs(mBubbleAngle);
         } else {
@@ -261,7 +261,15 @@ public class ProgressDownloadView extends View {
         anim.setDuration((long) (ANIMATION_DURATION_BASE+Math.abs(mTarget*10-getProgress()*10)/2));
         anim.start();
     }
-
+    public void restart()
+    {
+        mState = State.STATE_WORKING;
+        mProgress =0;
+        makePathBlack();
+        makePathWhite();
+        makePathBubble();
+        invalidate();
+    }
     public void setProgress(float progress) {
         mProgress = progress;
         makePathBlack();

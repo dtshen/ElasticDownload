@@ -81,6 +81,23 @@ public class MainActivity extends ActionBarActivity {
 
             return true;
         }
+        else if(id==R.id.action_replay_animation){
+            new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                    mElasticDownloadView.restartAnimation();
+                }
+            });
+
+           /** new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mElasticDownloadView.success();
+                }
+            }, 2*ProgressDownloadView.ANIMATION_DURATION_BASE);
+            */
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
